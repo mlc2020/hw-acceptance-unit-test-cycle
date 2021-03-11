@@ -5,6 +5,13 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
+  movie_id = Movie.find_by(title: arg1) #find movie id by title
+  visit movie_path(movie_id) #visit movie details page
+  expect(page.body).to match(/Director:\s*#{arg2}/)
+  #match movie detail view for director to Director: arg2
+end
+
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.

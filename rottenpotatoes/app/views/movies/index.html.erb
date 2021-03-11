@@ -1,4 +1,9 @@
 <!--  This file is app/views/movies/index.html.erb -->
+<p>
+  <%= flash[:alert] if flash[:alert] %>
+  <%= link_to 'Home', root_path %>
+</p>
+
 <h2>All Movies</h2>
 
 <%#  Part 2: Start here... %>
