@@ -5,6 +5,10 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+Then /(.*) seed movies should exist/ do | n_seeds |
+  Movie.count.should be n_seeds.to_i
+end
+
 Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
   movie_id = Movie.find_by(title: arg1) #find movie id by title
   visit movie_path(movie_id) #visit movie details page
